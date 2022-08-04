@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>js calculator</title>
+  
+  
+</head>
+
+<body>
+ 
+    <link rel="stylesheet" href="calstyle.css">
+
+     
+<table class="calculator" >
+    <tr>
+      <td > <input  id = "inputfield" class="display-box" type="text" value = " "  disabled> </td>
+      <td><input type="button" value="ANS"  > </td>
+      <td><input type="button" id="btnouts" value =" " >  </td>
+      <td> <input type="button" value="C" onclick="clearScreen()" id="btn" > </td>
+    </tr>
+    <tr>
+        <!-- display() function displays the value of clicked button -->
+        <td> <input type="button" value="1" onclick="display('1')" /> </td>
+        <td> <input type="button" value="2" onclick="display('2')" /> </td>
+        <td> <input type="button" value="3" onclick="display('3')" /> </td>
+        <td> <input type="button" value="/" onclick="display('/'); opr = '/' " /> </td>
+      </tr>
+
+      <tr>
+        <!-- display() function displays the value of clicked button -->
+        <td> <input type="button" value="4" onclick="display('4')" /> </td>
+        <td> <input type="button" value="5" onclick="display('5')" /> </td>
+        <td> <input type="button" value="6" onclick="display('6')" /> </td>
+        <td> <input type="button" value="+" onclick="display('+'); opr = '+' " /> </td>
+      </tr>
+
+      <tr>
+        <!-- display() function displays the value of clicked button -->
+        <td> <input type="button" value="7" onclick="display('7')" /> </td>
+        <td> <input type="button" value="8" onclick="display('8')" /> </td>
+        <td> <input type="button" value="9" onclick="display('9')" /> </td>
+        <td> <input type="button" value="-" onclick="display('-'); opr = '-' " /> </td>
+      </tr>
+
+      <tr>
+        <!-- display() function displays the value of clicked button -->
+        <td> <input type="button" value="." onclick="display('.')" /> </td>
+        <td> <input  id = "0" type="button" value="0" onclick="display('0')" /> </td>
+        <td> <input id="btn1" type="button" value="=" onclick="display('=')" /> </td>
+        <td> <input type="button" value="*" onclick="display('*'); opr = '*' " /> </td>
+      </tr>
+
+    </table>
+</body>
+<script>
+var number;
+var opr = '';
+
+function display (value) {
+    console.log(value)
+    console.log(opr)
+    // var inputsbox = document.getElementById("inputfield");
+    // inputsbox.value = inputsbox.value + value
+    // .appendChild(node);
+   
+    document.getElementById("inputfield").value = document.getElementById("inputfield").value + value;
+    var inputs = document.getElementById("inputfield").value
+    console.log(typeof inputs)
+    console.log(inputs )
+    
+    const result = inputs.split(/[.%=*/+-]/);
+    console.log(result);
+  
+    if(value === '='){
+       
+        
+        if(opr == '') {
+            alert('choose operation that you want to perform');
+        }
+        
+        else if (value == '=' && opr == '+') {
+            result[0] = parseInt(result[0]) + parseInt(result[1]);
+            alert( result[0]);
+            document.getElementById("inputfield").value = " ";
+            document.getElementById("inputfield").value = document.getElementById("inputfield").value + result[0];
+            document.getElementById("btnouts").value = result[0]
+        }  
+
+        else if (value == '=' && opr == '-') {
+            result[0] = parseInt(result[0]) - parseInt(result[1]);
+            alert( result[0]);
+            document.getElementById("inputfield").value = " ";
+            document.getElementById("inputfield").value = document.getElementById("inputfield").value + result[0];
+            document.getElementById("btnouts").value = result[0] 
+        }
+        
+        else if (value == '=' && opr == '*') {
+            result[0] = parseInt(result[0]) * parseInt(result[1]);
+            alert( result[0]);
+            document.getElementById("inputfield").value = " ";
+            document.getElementById("inputfield").value = document.getElementById("inputfield").value + result[0];
+            document.getElementById("btnouts").value = result[0]  
+        }
+
+
+        else if (value == '=' && opr == '/') {
+            result[0] = parseInt(result[0]) / parseInt(result[1]);
+            alert( result[0]);
+            document.getElementById("inputfield").value = " ";
+            document.getElementById("inputfield").value = document.getElementById("inputfield").value + result[0];
+            document.getElementById("btnouts").value = result[0]
+        }
+
+
+
+        else {
+           let val = "only valid for 2 number" 
+           document.getElementById("inputfield").value = val;
+        }
+
+
+
+    }
+    
+    
+}
+
+function clearScreen()  {
+    document.getElementById("inputfield").value = " ";
+}
+
+
+
+
+
+
+
+</script>
+
+</html>
